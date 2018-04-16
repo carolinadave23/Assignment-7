@@ -11,6 +11,90 @@
     procedure using the Table-Driven Selection technique, shown in Section 6.5.4. (You will implement the operations in Exercise 6.)(The 
     Irvine32 library is required for this solution program.)
 
+ExitProcess proto
+
+
+
+
+.code
+main proc
+
+	;display menu
+	mov rdx
+
+
+
+
+
+	call Cr1f
+
+	mov rdx, OFFSET menu4
+	call WriteString
+	call Cr1f
+
+	mov rdx, OFFSET menu5
+	call WriteString
+	call Cr1f
+
+	mov rdx, OFFSET prompt
+	call WriteString
+	mov rdx, OFFSET choice
+	mov rcx, 2
+	call ReadString
+
+	mov rbx, OFFSET caseTable
+	mov rcx, numberOfEntries
+	movzx r8, BYTE PTR [choice]
+	
+	L1:
+		movzx r9, BYTE PTR [rbx]
+		cmp r8, r9
+		jne L2
+		call NEAR PTR [rbx + 1]
+		call WriteString
+		call Cr1f
+		jmp L3
+	L2:
+		add rbx, entrySize
+		loop L1
+	L3:
+		call ExitProcess
+
+	mov ecx, 0
+	call ExitProcess
+main endp
+
+Process_A PROC
+	mov rdx, OFFSET msgA
+	call WriteString
+	ret
+Process_A ENDP
+
+Process_B PROC
+	mov rdx, OFFSET msgB
+	call WriteString
+	ret
+Process_B ENDP
+
+Process_C PROC
+	mov rdx, OFFSET msgC
+	call WriteString
+	ret
+Process_C ENDP
+
+Process_D PROC
+	mov rdx, OFFSET msgD
+	call WriteString
+	ret
+
+
+
+
+
+
+
+.data
+
 
 
 
