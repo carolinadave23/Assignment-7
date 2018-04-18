@@ -13,18 +13,11 @@
 
 ExitProcess proto
 
-
-
-
 .code
 main proc
 
 	;display menu
 	mov rdx
-
-
-
-
 
 	call Cr1f
 
@@ -87,20 +80,7 @@ Process_D PROC
 	call WriteString
 	ret
 
-
-
-
-
-
-
 .data
-
-
-
-
-
-
-
 
 6. Boolean Calculator (2)
     Continue the solution program from Exercise 5 by implementing the following procedures:
